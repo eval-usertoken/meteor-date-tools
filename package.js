@@ -6,25 +6,21 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
+  api.versionsFrom('1.0');
+
   api.use([
     'tracker',
+    'dispatch:time-tracker',
     'mrt:moment-timezone@0.2.1'
   ], 'web');
 
   api.addFiles([
     'date_tools.js',
-    'timezone_map.js',
     'timezone.js',
     'formatters.js'
   ], 'web');
 
   api.export('DateTools', 'web');
-});
-
-// XXX make this dependency configurable. Right now we are
-// using a fork to support our backend request structure.
-Cordova.depends({
-  'org.apache.cordova.globalization': '0.3.3'
 });
 
 Package.onTest(function (api) {

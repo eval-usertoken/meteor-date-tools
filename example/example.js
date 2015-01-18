@@ -13,7 +13,6 @@ if (Meteor.isClient) {
     }
   });
 
-
   Meteor.startup(function () {
     DateTools.updateDeviceTimezone();
   });
