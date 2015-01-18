@@ -1,7 +1,7 @@
 Package.describe({
   name: 'dispatch:date-tools',
   summary: 'Timezone aware date helpers.',
-  version: '1.0.0',
+  version: '1.1.0',
   git: 'https://github.com/DispatchMe/meteor-date-tools.git'
 });
 
@@ -10,7 +10,7 @@ Package.onUse(function (api) {
 
   api.use([
     'tracker',
-    'dispatch:time-tracker',
+    'dispatch:time-tracker@1.0.0',
     'mrt:moment-timezone@0.2.1'
   ], 'web');
 
