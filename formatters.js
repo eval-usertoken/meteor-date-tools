@@ -1,42 +1,30 @@
 /**
  * Format a date (reactive).
- * Ex. Jan 16 5 PM
+ * Ex. Jan 16 5 PM (w/ momentFormat 'MMM DDDo LT')
+ * Ex. 5:05 PM (w/ momentFormat 'LT')
  * If the timezone is different from the expected timezone, append it.
  * Ex. Jan 16 4 PM CST
+ * Ex. 4:05 PM CST
  * @param {Date} timestamp
+ * @param {String} [momentFormat] The moment format to use. Defaults to 'LT'.
  * @returns {String}
  */
-DateTools.dateTimeLong = function (timestamp) {
+DateTools.format = function (timestamp, momentFormat) {
+  if (!timestamp) return;
+
   timestamp = moment(timestamp);
+
+  // Default moment format to a long time
+  momentFormat = momentFormat || 'LT';
 
   var timezoneToShow = this.timezoneToShow();
 
   if (timezoneToShow) {
-    return timestamp.tz(timezoneToShow).format('MMM DDDo LT z');
+    return timestamp.tz(timezoneToShow).format(momentFormat + ' z');
   }
 
-  return timestamp.format('MMM DDDo LT');
-};
-
-/**
- * Format a date (reactive).
- * Ex. 5 PM
- * If the timezone is different from the expected timezone, append it.
- * Ex. 4 PM CST
- * @param {Date} timestamp
- * @returns {String}
- */
-DateTools.timeLong = function (timestamp) {
-  timestamp = moment(timestamp);
-
-  var timezoneToShow = this.timezoneToShow();
-
-  if (timezoneToShow) {
-    return timestamp.tz(timezoneToShow).format('LT z');
-  }
-
-  return timestamp.format('LT');
-};
+  return timestamp.format(momentFormat);
+}
 
 /**
  * The relative day to today (reactive).
