@@ -6,7 +6,7 @@
  * Ex. Jan 16 4 PM CST
  * Ex. 4:05 PM CST
  * @param {Date} timestamp
- * @param {String} momentFormat The moment format to use.
+ * @param {String} [momentFormat] The moment format to use. Defaults to 'LT'.
  * @returns {String}
  */
 DateTools.format = function (timestamp, momentFormat) {
