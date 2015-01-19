@@ -1,7 +1,7 @@
 if (Meteor.isClient) {
   Template.example.helpers({
     date: function () {
-      return DateTools.timeLong(new Date());
+      return DateTools.format(new Date(), 'LT');
     }
   });
 
