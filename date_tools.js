@@ -13,3 +13,21 @@ DateTools.addDays = function (timestamp, days) {
 
   return newDate;
 };
+
+/**
+ * Return a new date at midnight on the same day as the timestamp.
+ * @param {Date} timestamp
+ * @returns {Date}
+ */
+DateTools.min = function (timestamp) {
+  return new Date(timestamp.getFullYear(), timestamp.getMonth(), timestamp.getDate(), 0, 0, 0);
+};
+
+/**
+ * Return a new date at 11:59:59 on the same day as the timestamp.
+ * @param {Date} timestamp
+ * @returns {Date}
+ */
+DateTools.max = function (timestamp) {
+  return new Date(timestamp.getFullYear(), timestamp.getMonth(), timestamp.getDate(), 23, 59, 999);
+};

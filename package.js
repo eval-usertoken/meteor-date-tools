@@ -1,7 +1,7 @@
 Package.describe({
   name: 'dispatch:date-tools',
   summary: 'Timezone aware date helpers.',
-  version: '1.2.0',
+  version: '1.3.0',
   git: 'https://github.com/DispatchMe/meteor-date-tools.git'
 });
 
