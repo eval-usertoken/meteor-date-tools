@@ -56,7 +56,7 @@ DateTools.fuzzyDay = function (date) {
   // Default the title to day of the week
   // and default the detail to the month and day.
   var title = dayOfWeek;
-  var detail = dateString;
+  var detail = shortDayOfWeek + ' ' + dateString;
 
   // Yesterday
   if (daysFromToday === -1) {
@@ -70,8 +70,12 @@ DateTools.fuzzyDay = function (date) {
   else if (daysFromToday === 1) {
     title = 'Tomorrow';
   }
+  // Other days show the day of the week in the title
+  // so only show the date string in the detail.
+  else {
+    detail = dateString;
+  }
 
-  detail = shortDayOfWeek + ' ' + detail;
 
-  return { title: title, detail: detail };
+  return {title: title, detail: detail};
 };

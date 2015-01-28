@@ -21,6 +21,13 @@ Tinytest.add('DateTools.fuzzyDay()', function (test) {
   fuzzyDay = DateTools.fuzzyDay(tomorrow);
   test.equal(fuzzyDay.title, 'Tomorrow');
 
+  // With a date in two days, fuzzyDay.title is the day name
+  // and the detail is the month name and date
+  var inTwoDays = DateTools.addDays(new Date(), 2);
+  fuzzyDay = DateTools.fuzzyDay(inTwoDays);
+  test.equal(fuzzyDay.title, moment(inTwoDays).format('dddd'));
+  test.equal(fuzzyDay.detail, moment(inTwoDays).format('MMM. Do'));
+
   // With a date not this year, fuzzyDay.detail includes the year
   var lastYear = new Date(2000, 0, 1);
   fuzzyDay = DateTools.fuzzyDay(lastYear);
