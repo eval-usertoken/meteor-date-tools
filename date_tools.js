@@ -29,5 +29,5 @@ DateTools.min = function (timestamp) {
  * @returns {Date}
  */
 DateTools.max = function (timestamp) {
-  return new Date(timestamp.getFullYear(), timestamp.getMonth(), timestamp.getDate(), 23, 59, 999);
+  return new Date(timestamp.getFullYear(), timestamp.getMonth(), timestamp.getDate(), 23, 59, 59);
 };
