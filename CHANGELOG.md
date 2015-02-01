@@ -1,6 +1,12 @@
 # Changelog
 
 ## vCurrent
+## [master] (https://github.com/DispatchMe/meteor-date-tools/tree/master)
+#### 01/02/15 by Morten Henriksen
+- Bump to version 1.3.3
+
+- Update time-tracker dep
+
 ## [v1.3.2] (https://github.com/DispatchMe/meteor-date-tools/tree/v1.3.2)
 #### 29/01/15 by Morten Henriksen
 - mbr fix
