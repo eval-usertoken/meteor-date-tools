@@ -10,7 +10,7 @@ Package.onUse(function (api) {
 
   api.use([
     'tracker',
-    'dispatch:time-tracker@1.0.1',
+    'dispatch:time-tracker@1.0.2',
     'mrt:moment-timezone@0.2.1'
   ], 'web');
 
