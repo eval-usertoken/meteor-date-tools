@@ -1,6 +1,10 @@
 # Changelog
 
 ## vCurrent
+## [master] (https://github.com/DispatchMe/meteor-date-tools/tree/master)
+#### 01/02/15 by Morten Henriksen
+- changelog 1.3.3
+
 ## [v1.3.3] (https://github.com/DispatchMe/meteor-date-tools/tree/v1.3.3)
 #### 01/02/15 by Morten Henriksen
 - Bump to version 1.3.3
