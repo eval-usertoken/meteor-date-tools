@@ -1,9 +1,9 @@
 /**
  * Format a date (reactive).
- * Ex. Jan 16 5 PM (w/ momentFormat 'MMM DDDo LT')
+ * Ex. Jan 16th 5:00 PM (w/ momentFormat 'MMM Do LT')
  * Ex. 5:05 PM (w/ momentFormat 'LT')
  * If the timezone is different from the expected timezone, append it.
- * Ex. Jan 16 4 PM CST
+ * Ex. Jan 16th 4:00 PM CST
  * Ex. 4:05 PM CST
  * @param {Date} timestamp
  * @param {String} [momentFormat] The moment format to use. Defaults to 'LT'.
