@@ -1,3 +1,21 @@
+// Helper used for formatting
+// If excludeTimezone is true, the date will be formatted in the proper
+// timezone, but will not show the timezone label
+DateTools._format = function (time, momentFormat, excludeTimezone) {
+  time = moment(time);
+
+  // Default moment format to a long time
+  momentFormat = momentFormat || 'LT';
+
+  var timezoneToShow = this.timezoneToShow();
+
+  if (!timezoneToShow) return time.format(momentFormat);
+
+  if (excludeTimezone) return time.tz(timezoneToShow).format(momentFormat);
+
+  return time.tz(timezoneToShow).format(momentFormat + ' z');
+};
+
 /**
  * Format a date (reactive).
  * Ex. Jan 16th 5:00 PM (w/ momentFormat 'MMM Do LT')
@@ -5,25 +23,27 @@
  * If the timezone is different from the expected timezone, append it.
  * Ex. Jan 16th 4:00 PM CST
  * Ex. 4:05 PM CST
- * @param {Date} timestamp
+ * @param {Array.<Date> | Date} times
  * @param {String} [momentFormat] The moment format to use. Defaults to 'LT'.
  * @returns {String}
  */
-DateTools.format = function (timestamp, momentFormat) {
-  if (!timestamp) return;
+DateTools.format = function (times, momentFormat) {
+  if (!times) return;
 
-  timestamp = moment(timestamp);
+  if (!(times instanceof Array)) return DateTools._format(times, momentFormat);
 
-  // Default moment format to a long time
-  momentFormat = momentFormat || 'LT';
+  if (!times.length) return;
 
-  var timezoneToShow = this.timezoneToShow();
+  if (times.length === 1)  return DateTools._format(times[0], momentFormat);
 
-  if (timezoneToShow) {
-    return timestamp.tz(timezoneToShow).format(momentFormat + ' z');
-  }
+  var timeRange = DateTools._format(times.shift(), momentFormat, true);
 
-  return timestamp.format(momentFormat);
+  times.forEach(function (time) {
+    timeRange += ' - ' + DateTools._format(time, momentFormat);
+  });
+
+  return timeRange;
+
 }
 
 /**

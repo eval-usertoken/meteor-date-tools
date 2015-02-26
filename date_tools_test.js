@@ -1,7 +1,30 @@
+// Mock for the tests
+var mockDeviceOffset = 300;
+DateTools._getDeviceOffset = function() {
+  return mockDeviceOffset;
+};
+
 Tinytest.add('DateTools.addDays()', function (test) {
   var newDate = DateTools.addDays(new Date(2014, 0, 1), 10);
 
   test.equal(newDate, new Date(2014, 0, 11));
+});
+
+Tinytest.add('DateTools.format()', function (test) {
+  DateTools.setExpectedTimezone('America/Chicago');
+
+  mockDeviceOffset = 300;
+  DateTools.updateDeviceTimezone();
+
+  var tenEastern = new Date(2015, 0, 1, 10);
+  tenEastern.setUTCHours(15);
+
+  var elevenEastern = new Date(2015, 0, 1, 11);
+  elevenEastern.setUTCHours(16);
+
+  var timeRange = DateTools.format([tenEastern, elevenEastern], 'h:mma');
+
+  test.equal(timeRange, '9:00am - 10:00am CST');
 });
 
 Tinytest.add('DateTools.fuzzyDay()', function (test) {
@@ -34,20 +57,15 @@ Tinytest.add('DateTools.fuzzyDay()', function (test) {
   test.isTrue(fuzzyDay.detail.indexOf('2000') > -1);
 });
 
-// Mock for the tests
-var mockDeviceOffset = 300;
-DateTools._getDeviceOffset = function() {
-  return mockDeviceOffset;
-};
-
 Tinytest.add('DateTools.timezoneToShow()', function (test) {
+  DateTools.setExpectedTimezone('America/New_York');
+
   // With no expected timezone, timezoneToShow is false
   var timezoneToShow = DateTools.timezoneToShow();
   test.isFalse(timezoneToShow);
 
   // With an expected timezone and no device timezone offset,
   // timezoneToShow is false
-  DateTools.setExpectedTimezone('America/New_York');
   timezoneToShow = DateTools.timezoneToShow();
   test.isFalse(timezoneToShow);
 
